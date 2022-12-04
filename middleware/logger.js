@@ -21,6 +21,13 @@ const logger = async (message, logFile) => {
 };
 const loggerMiddleware = (req, res, next) => {
   logger(`${req.method}\t${req.url}\t${req.headers.origin}`, "requestLogs.log");
+  console.log(
+    `\nMethod: ${req.method}\nURL: ${req.url}\nTime: ${format(
+      new Date(),
+      "HH:mm:ss"
+    )}`
+  );
+
   next();
 };
 
