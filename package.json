@@ -1,0 +1,27 @@
+{
+  "name": "iot-votingsystem-api",
+  "version": "0.0.1",
+  "description": "API for BIT year 2 Smart Voting System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prabinzz/iot-votingSystem-api.git"
+  },
+  "keywords": [
+    "API",
+    "Smart",
+    "Voting"
+  ],
+  "author": "Prabin Parajuli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prabinzz/iot-votingSystem-api/issues"
+  },
+  "homepage": "https://github.com/prabinzz/iot-votingSystem-api#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
