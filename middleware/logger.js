@@ -7,7 +7,7 @@ const fs = require("fs"); // file system access
 const logger = async (message, logFile) => {
   const datetime = format(new Date(), "yyMMdd\tHH:mm:ss");
   const logItem = `${datetime}\t${uuid()}\t${message}\n`;
-  const logPath = path.join(__dirname, "logs");
+  const logPath = path.join(__dirname, "..", "logs");
 
   try {
     if (!fs.existsSync(logPath)) {
