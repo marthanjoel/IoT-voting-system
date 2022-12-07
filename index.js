@@ -1,6 +1,6 @@
 // Imports
 const express = require("express");
-const { loggerMiddleware } = require("./middleware/logger");
+const { loggerMiddleware, logger } = require("./middleware/logger");
 const { errHandlerMiddleware } = require("./middleware/errHandler");
 require("dotenv").config();
 const dbConnect = require("./config/dbConnect");
@@ -13,6 +13,8 @@ dbConnect();
 
 // Routes
 app.use("/", require("./route/root"));
+app.use("/match/rfid", require("./route/rfidMatch"));
+app.use("/match/finger", require("./route/fingerMatch"));
 app.use("*", (req, res) => {
   res.status(404).json({ message: "404 Not Found" });
 });
@@ -25,4 +27,13 @@ mongoose.connection.once("open", () => {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
+});
+
+mongoose.connection.on("error", (error) => {
+  console.log(error.message);
+  logger(
+    `${error.no}: ${error.code}\t${error.syscall}\t${error.hostname}\t`,
+    "mongooseErrorLog.log"
+  );
+  console.log("Couldn't connect to database..");
 });
