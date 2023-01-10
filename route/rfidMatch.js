@@ -3,12 +3,17 @@ const Voter = require("../models/Voter");
 const route = require("express").Router();
 
 route.post("/", async (req, res) => {
-  req.headers.rfid;
   let voter = await Voter.findOne({ rfid: req.headers.rfid });
   if (!voter) {
-    return res.status(444).json({ message: "RFID not found in database." });
+    console.log("Not Found!");
+    return res.status(444).send("RFID not found in database.");
   } else {
-    res.status(200).json({ name: voter.name, id: voter.id });
+    console.log("Found!!");
+    console.log(voter);
+    if (voter.status) {
+      return res.status(445).send("Already Voted");
+    }
+    return res.status(200).send(`${voter.id},${voter.name}`);
   }
 });
 

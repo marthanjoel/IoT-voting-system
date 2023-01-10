@@ -5,15 +5,19 @@ const { errHandlerMiddleware } = require("./middleware/errHandler");
 require("dotenv").config();
 const dbConnect = require("./config/dbConnect");
 const mongoose = require("mongoose");
+var cors = require("cors");
 const app = express();
 
 // Middlewares
+app.use(cors());
 app.use(loggerMiddleware); // logger
 dbConnect();
 
 // Routes
 app.use("/", require("./route/root"));
 app.use("/match/rfid", require("./route/rfidMatch"));
+app.use("/cast-vote", require("./route/cast-vote"));
+app.use("/getparty", require("./route/getParty"));
 app.use("*", (req, res) => {
   res.status(404).json({ message: "404 Not Found" });
 });

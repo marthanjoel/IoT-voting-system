@@ -20,6 +20,10 @@ const Voter = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Voter", Voter);
