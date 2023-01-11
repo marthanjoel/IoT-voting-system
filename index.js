@@ -18,6 +18,7 @@ app.use("/", require("./route/root"));
 app.use("/match/rfid", require("./route/rfidMatch"));
 app.use("/cast-vote", require("./route/cast-vote"));
 app.use("/getparty", require("./route/getParty"));
+app.use("/getvoter", require("./route/getvoter"));
 app.use("*", (req, res) => {
   res.status(404).json({ message: "404 Not Found" });
 });
