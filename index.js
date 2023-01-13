@@ -6,6 +6,7 @@ require("dotenv").config();
 const dbConnect = require("./config/dbConnect");
 const mongoose = require("mongoose");
 var cors = require("cors");
+const { identify } = require("./middleware/identify");
 const app = express();
 
 // Middlewares

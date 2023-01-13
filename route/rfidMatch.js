@@ -1,8 +1,9 @@
+const { identify } = require("../middleware/identify");
 const Voter = require("../models/Voter");
 
 const route = require("express").Router();
 
-route.post("/", async (req, res) => {
+route.post("/", [identify], async (req, res) => {
   let voter = await Voter.findOne({ rfid: req.headers.rfid });
   if (!voter) {
     console.log("Not Found!");
