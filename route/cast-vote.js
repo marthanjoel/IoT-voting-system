@@ -9,7 +9,7 @@ route.post("/", async (req, res) => {
   // update vote
   const party = await Party.findOne({ id: p });
   const voter = await Voter.findOne({ id: v });
-  if (party && voter) {
+  if (party && voter && !voter.status) {
     await party.update({ vote: party.vote + 1 });
     // update voter status
     await voter.update({ status: true });
