@@ -4,17 +4,19 @@ const Voter = require("../models/Voter");
 const route = require("express").Router();
 
 route.post("/", async (req, res) => {
-  console.log("Test");
   v = req.headers.id;
   const p = req.headers.vote;
   // update vote
   const party = await Party.findOne({ id: p });
-  await party.update({ vote: party.vote + 1 });
-
-  // update voter status
   const voter = await Voter.findOne({ id: v });
-  await voter.update({ status: true });
-  console.log(await Party.findOne({ id: p }));
+  if (party && voter) {
+    await party.update({ vote: party.vote + 1 });
+    // update voter status
+    await voter.update({ status: true });
+
+    res.status(200).send("Vote Successfull");
+  }
+  res.status(444).send("Voting Faild");
 });
 
 module.exports = route;
