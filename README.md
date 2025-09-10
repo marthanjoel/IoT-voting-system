@@ -61,6 +61,8 @@ python3 app.py
 
 
 
+
+
 -----
 🔧 How the Simulation Works
 
@@ -75,6 +77,9 @@ Enter your voter ID.
 Click Cast Vote.
 
 The system confirms the vote has been recorded via the API.
+<img width="1366" height="768" alt="Screenshot from 2025-09-10 16-53-06" src="https://github.com/user-attachments/assets/873db505-51f2-4ef0-b42e-6e650fca6186" />
+
+
 
 
 ---
